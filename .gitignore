@@ -1,0 +1,11 @@
+# macOS system files
+.DS_Store
+
+# Optional: Node/Build tools (if you use them later)
+node_modules/
+dist/
+build/
+
+# Optional: log/temp files
+*.log
+*.tmp

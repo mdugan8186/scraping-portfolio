@@ -1,0 +1,78 @@
+:root {
+  --bg: #0B0F17;
+  --panel: #121826;
+  --text: #E6E9EF;
+  --muted: #A7B3C2;
+  --border: #2A3242;
+  --accent: #4EA1FF;
+  --radius: 14px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --maxw: 1100px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 0 var(--space-2);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: saturate(120%) blur(6px);
+  background: color-mix(in oklab, var(--bg) 85%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+.section {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+button,
+.btn {
+  border-radius: var(--radius);
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn.btn-primary {
+  background: var(--accent);
+  color: #082018;
+  border-color: transparent;
+}
+
+.btn.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--accent) 70%, transparent);
+  outline-offset: 3px;
+}

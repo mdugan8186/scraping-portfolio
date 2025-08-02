@@ -227,3 +227,34 @@ button,
   border-color: color-mix(in oklab, var(--accent) 35%, transparent);
   text-decoration: none;
 }
+
+/* ===== Contact ===== */
+.contact .container {
+  max-width: 60ch;
+}
+#contact a[href^="mailto:"],
+#contact a[href^="https://"],
+#contact a[href^="http://"] {
+  word-break: break-all;
+}
+#contact p {
+  margin: 0.25rem 0;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: color-mix(in oklab, var(--bg) 92%, transparent);
+}
+.site-footer .container {
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.site-footer p {
+  margin: 0.25rem 0;
+  color: var(--muted);
+}

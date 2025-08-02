@@ -95,71 +95,97 @@
         <div class="container">
           <h2 id="projects-title">Projects</h2>
 
-          <article class="project-card" aria-labelledby="steam-title">
-            <h3 id="steam-title">Steam Sale Scraper</h3>
-            <p>2-3 sentence description placeholder.</p>
-            <ul>
-              <li>Key feature</li>
-              <li>Key feature</li>
-              <li>Key feature</li>
-            </ul>
-            <p>
-              <a href="#" aria-label="Steam Sale Scraper GitHub (placeholder)"
-                >GitHub Repo</a
-              >
-            </p>
-          </article>
+          <div class="projects-grid">
+            <article class="project-card" aria-labelledby="steam-title">
+              <h3 id="steam-title">Steam Sale Scraper</h3>
+              <p class="project-desc">
+                Scrapes Steam Store sale pages to collect the most discounted
+                games, including title, tags, reviews, pricing, and discount
+                percentage.
+              </p>
+              <ul class="project-features">
+                <li>Handles JS-rendered pages with Playwright</li>
+                <li>Config-driven selectors; modular parsing</li>
+                <li>Validation & post-processing pipeline</li>
+              </ul>
+              <p class="project-links">
+                <a
+                  class="btn btn-link"
+                  href="https://github.com/mdugan8186/steam-sale-scraper"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub Repo</a
+                >
+              </p>
+            </article>
 
-          <article class="project-card" aria-labelledby="opengov-title">
-            <h3 id="opengov-title">OpenGovUS Business Scraper</h3>
-            <p>2-3 sentence description placeholder.</p>
-            <ul>
-              <li>Key feature</li>
-              <li>Key feature</li>
-              <li>Key feature</li>
-            </ul>
-            <p>
-              <a
-                href="#"
-                aria-label="OpenGovUS Business Scraper GitHub (placeholder)"
-                >GitHub Repo</a
-              >
-            </p>
-          </article>
+            <article class="project-card" aria-labelledby="opengov-title">
+              <h3 id="opengov-title">OpenGovUS Business Scraper</h3>
+              <p class="project-desc">
+                Extracts business listings from OpenGovUS with robust
+                pagination, deduplication, and cleaned CSV output suitable for
+                analysis.
+              </p>
+              <ul class="project-features">
+                <li>Pagination handling & duplicate detection</li>
+                <li>Cleaned datasets with consistent schema</li>
+                <li>Production-style code organization</li>
+              </ul>
+              <p class="project-links">
+                <a
+                  class="btn btn-link"
+                  href="https://github.com/mdugan8186/opengovus-scraper"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub Repo</a
+                >
+              </p>
+            </article>
 
-          <article class="project-card" aria-labelledby="books-title">
-            <h3 id="books-title">BooksToScrape eCommerce Scraper</h3>
-            <p>2–3 sentence description placeholder.</p>
-            <ul>
-              <li>Key feature</li>
-              <li>Key feature</li>
-              <li>Key feature</li>
-            </ul>
-            <p>
-              <a
-                href="#"
-                aria-label="BooksToScrape eCommerce Scraper GitHub (placeholder)"
-                >GitHub Repo</a
-              >
-            </p>
-          </article>
+            <article class="project-card" aria-labelledby="books-title">
+              <h3 id="books-title">BooksToScrape eCommerce Scraper</h3>
+              <p class="project-desc">
+                Scrapes product data from books.toscrape.com including titles,
+                prices, availability, ratings, and categories with pagination.
+              </p>
+              <ul class="project-features">
+                <li>Pagination-aware crawler</li>
+                <li>Robust parsing of product attributes</li>
+                <li>CSV export with consistent fields</li>
+              </ul>
+              <p class="project-links">
+                <a
+                  class="btn btn-link"
+                  href="https://github.com/mdugan8186/bookstoscrape-scraper"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub Repo</a
+                >
+              </p>
+            </article>
 
-          <article class="project-card" aria-labelledby="gecko-title">
-            <h3 id="gecko-title">CoinGecko API Scraper</h3>
-            <p>2–3 sentence description placeholder.</p>
-            <ul>
-              <li>Key feature</li>
-              <li>Key feature</li>
-              <li>Key feature</li>
-            </ul>
-            <p>
-              <a
-                href="#"
-                aria-label="CoinGecko API Scraper GitHub (placeholder)"
-                >GitHub Repo</a
-              >
-            </p>
-          </article>
+            <article class="project-card" aria-labelledby="gecko-title">
+              <h3 id="gecko-title">CoinGecko API Scraper</h3>
+              <p class="project-desc">
+                Retrieves top 100 cryptocurrencies by market cap via CoinGecko
+                API, including price, market cap, volume, and 24h change.
+              </p>
+              <ul class="project-features">
+                <li>API consumption with error handling</li>
+                <li>Rate-limit safety & retries</li>
+                <li>Schema-validated structured output</li>
+              </ul>
+              <p class="project-links">
+                <a
+                  class="btn btn-link"
+                  href="https://github.com/mdugan8186/coingecko-api-scraper"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub Repo</a
+                >
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 

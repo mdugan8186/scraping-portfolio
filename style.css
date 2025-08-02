@@ -177,3 +177,53 @@ button,
 @media (min-width: 900px) {
   .about-content { gap: 0.9rem; }
 }
+
+
+/* ===== Projects grid ===== */
+.projects-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr; /* two columns on desktop */
+    gap: 1.25rem;
+  }
+}
+
+.project-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  transition: transform 120ms ease, border-color 120ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--accent) 25%, var(--border));
+}
+
+.project-desc {
+  color: var(--text);
+  margin: 0.4rem 0;
+}
+
+.project-features {
+  margin: 0.5rem 0 0.75rem;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+.project-features li { margin: 0.25rem 0; }
+
+.project-links .btn-link {
+  display: inline-block;
+  padding: 0.4rem 0.6rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+.project-links .btn-link:hover {
+  border-color: color-mix(in oklab, var(--accent) 35%, transparent);
+  text-decoration: none;
+}

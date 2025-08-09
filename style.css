@@ -345,3 +345,20 @@ main section[id] { scroll-margin-top: 80px; }
 @media (min-width: 700px) {
   .projects-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* == Mobile tap targets (nav + back-to-top) == */
+@media (max-width: 800px) {
+  .site-nav .nav-list a {
+    padding: 0.6rem 0.5rem;     /* larger touch area */
+    line-height: 1.4;
+  }
+  .back-to-top {
+    padding: 0.8rem 1rem;       /* easier to tap */
+    min-width: 44px;            /* WCAG target size */
+    min-height: 44px;
+  }
+  .nav-toggle {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}

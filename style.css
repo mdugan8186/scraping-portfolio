@@ -340,3 +340,8 @@ main section[id] { scroll-margin-top: 80px; }
 @media (max-width: 800px) {
   main section[id] { scroll-margin-top: 96px; }
 }
+
+/* == Projects: 2-column grid from 700px up (was 900px) == */
+@media (min-width: 700px) {
+  .projects-grid { grid-template-columns: 1fr 1fr; }
+}

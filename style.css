@@ -371,3 +371,35 @@ main section[id] { scroll-margin-top: 80px; }
     scroll-behavior: auto !important;
   }
 }
+
+/* == Skip link visibility == */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.6rem 0.8rem;
+  background: var(--panel);
+  color: var(--text);
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  z-index: 9999;
+}
+
+/* Slightly stronger focus on interactive items */
+a:focus-visible,
+button:focus-visible,
+.site-nav a:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--accent) 75%, transparent);
+  outline-offset: 3px;
+}

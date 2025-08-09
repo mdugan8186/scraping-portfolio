@@ -362,3 +362,12 @@ main section[id] { scroll-margin-top: 80px; }
     min-height: 44px;
   }
 }
+
+/* == Respect user's reduced motion preference == */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

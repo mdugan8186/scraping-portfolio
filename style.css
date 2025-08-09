@@ -323,3 +323,12 @@ button,
   text-decoration: none;
   border-bottom: 2px solid color-mix(in oklab, var(--accent) 65%, transparent);
 }
+
+/* Responsive gutter fix for header and hero at <=1080px */
+@media (max-width: 1150px) {
+  .site-header .container,
+  .hero .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

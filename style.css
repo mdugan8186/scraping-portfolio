@@ -403,3 +403,45 @@ button:focus-visible,
   outline: 3px solid color-mix(in oklab, var(--accent) 75%, transparent);
   outline-offset: 3px;
 }
+
+/* == Subtle hover/focus polish == */
+
+/* Links: cleaner underline and slight lift on hover */
+a {
+  text-underline-offset: 2px;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons: gentle brightness + outline on focus */
+.btn:hover {
+  filter: brightness(1.06);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--accent) 70%, transparent);
+  outline-offset: 3px;
+}
+
+/* Project cards: small lift + border tint on hover */
+.project-card {
+  transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+.project-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--accent) 25%, var(--border));
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* Active nav underline: a bit thicker so it's obvious */
+.site-nav a[aria-current="page"] {
+  border-bottom: 2px solid color-mix(in oklab, var(--accent) 65%, transparent);
+}
+
+/* Back-to-top: hover feedback */
+.back-to-top:hover {
+  filter: brightness(1.08);
+}

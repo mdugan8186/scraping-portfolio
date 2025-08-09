@@ -332,3 +332,11 @@ button,
     padding-right: 1rem;
   }
 }
+
+/* == Anchor offset so sections don't hide under sticky header == */
+main section[id] { scroll-margin-top: 80px; }
+
+/* If your header feels taller on small screens, add a bit more offset */
+@media (max-width: 800px) {
+  main section[id] { scroll-margin-top: 96px; }
+}

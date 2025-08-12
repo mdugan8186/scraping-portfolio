@@ -465,3 +465,15 @@ a:hover {
     object-fit: contain; /* prevents image cropping on very small screens */
   }
 }
+
+
+/* Contact: match section width to the rest of the site */
+.contact .container { max-width: var(--maxw); }
+
+/* Contact links: wrap nicely without breaking words in the middle */
+#contact a[href^="mailto:"],
+#contact a[href^="https://"],
+#contact a[href^="http://"] {
+  word-break: normal;
+  overflow-wrap: anywhere;  /* allows wrapping at safe points */
+}

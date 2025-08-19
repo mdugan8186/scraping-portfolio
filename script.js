@@ -18,7 +18,83 @@ if (navToggle && siteNav) {
   });
 }
 
-// === Smooth scroll (progressive enhancement) ===
+// === Smooth scroll + stable scroll-spy ===
+const sections = Array.from(document.querySelectorAll("main section[id]"));
+const navLinks = Array.from(
+  document.querySelectorAll('.site-nav a[href^="#"]')
+);
+const headerEl = document.querySelector(".site-header");
+
+function headerOffset() {
+  return (headerEl?.offsetHeight || 0) + 8; // small buffer below sticky header
+}
+
+// Robust: match by hash only (handles "#id", "./#id", "/index.html#id")
+function setActive(id) {
+  navLinks.forEach((a) => {
+    const href = a.getAttribute("href") || "";
+    const hashIndex = href.indexOf("#");
+    const targetId = hashIndex >= 0 ? href.slice(hashIndex + 1) : "";
+    const match = targetId === id;
+    if (match) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
+  });
+}
+
+let ticking = false;
+let suppressSpy = false;
+
+function updateActiveFromScroll() {
+  // Snap to last section when at (or essentially at) page bottom
+  const doc = document.documentElement;
+  const atBottom =
+    Math.ceil(window.scrollY + window.innerHeight) >= doc.scrollHeight - 2;
+  if (atBottom) {
+    const last = sections[sections.length - 1];
+    if (last) setActive(last.id);
+    return;
+  }
+
+  // Bias to ~35% down the viewport so short bottom sections can win
+  const y = window.scrollY + headerOffset() + window.innerHeight * 0.35;
+
+  let current = sections[0]?.id;
+  for (const sec of sections) {
+    if (sec.offsetTop <= y) current = sec.id;
+    else break; // sections are in DOM order
+  }
+  if (current) setActive(current);
+}
+
+window.addEventListener(
+  "scroll",
+  () => {
+    if (suppressSpy) return;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateActiveFromScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  },
+  { passive: true }
+);
+
+window.addEventListener("resize", () => updateActiveFromScroll());
+
+// Sync highlight on hash navigation and initial load
+window.addEventListener("hashchange", () => {
+  const id = location.hash.slice(1);
+  if (id) setActive(id);
+});
+window.addEventListener("load", () => {
+  const id = location.hash.slice(1);
+  if (id) setActive(id);
+  else updateActiveFromScroll();
+});
+
+// Smooth scroll with suppression to avoid flicker while scrolling
 document.addEventListener("click", (e) => {
   const link = e.target.closest('a[href^="#"]');
   if (!link) return;
@@ -28,44 +104,21 @@ document.addEventListener("click", (e) => {
   if (!target) return;
 
   e.preventDefault();
+
+  // Suppress scroll-spy while smooth scrolling
+  suppressSpy = true;
+
+  // Immediate visual feedback
+  setActive(id.slice(1));
+
   target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  // Re-enable spy shortly after scroll completes and resync
+  setTimeout(() => {
+    suppressSpy = false;
+    updateActiveFromScroll();
+  }, 650); // adjust if needed (500–700ms)
 });
-
-// === Active section highlighting ===
-const sections = Array.from(document.querySelectorAll("main section[id]"));
-const navLinks = Array.from(
-  document.querySelectorAll('.site-nav a[href^="#"]')
-);
-
-function setActive(id) {
-  navLinks.forEach((a) => {
-    const match = a.getAttribute("href") === `#${id}`;
-    a.setAttribute("aria-current", match ? "page" : null);
-  });
-}
-
-if ("IntersectionObserver" in window && sections.length) {
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) setActive(entry.target.id);
-      });
-    },
-    { root: null, rootMargin: "0px 0px -60% 0px", threshold: 0.1 }
-  );
-
-  sections.forEach((s) => io.observe(s));
-} else {
-  // Fallback: on scroll, pick the nearest section
-  window.addEventListener("scroll", () => {
-    let current = sections[0]?.id;
-    const fromTop = window.scrollY + 100;
-    sections.forEach((sec) => {
-      if (sec.offsetTop <= fromTop) current = sec.id;
-    });
-    if (current) setActive(current);
-  });
-}
 
 // === Back-to-top button ===
 const backToTop = document.querySelector(".back-to-top");

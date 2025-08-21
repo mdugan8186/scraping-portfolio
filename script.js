@@ -45,23 +45,25 @@ let ticking = false;
 let suppressSpy = false;
 
 function updateActiveFromScroll() {
-  // Snap to last section when at (or essentially at) page bottom
+  // Robust bottom check (accounts for mobile address bar/UI)
   const doc = document.documentElement;
-  const atBottom =
-    Math.ceil(window.scrollY + window.innerHeight) >= doc.scrollHeight - 2;
+  const body = document.body;
+  const scrollY = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
+  const viewport = window.innerHeight || doc.clientHeight;
+  const scrollHeight = Math.max(doc.scrollHeight, body.scrollHeight);
+
+  const atBottom = Math.ceil(scrollY + viewport) >= scrollHeight - 2;
   if (atBottom) {
     const last = sections[sections.length - 1];
     if (last) setActive(last.id);
     return;
   }
 
-  // Bias to ~35% down the viewport so short bottom sections can win
-  const y = window.scrollY + headerOffset() + window.innerHeight * 0.35;
-
+  const y = scrollY + headerOffset() + viewport * 0.35;
   let current = sections[0]?.id;
   for (const sec of sections) {
     if (sec.offsetTop <= y) current = sec.id;
-    else break; // sections are in DOM order
+    else break;
   }
   if (current) setActive(current);
 }
@@ -95,30 +97,29 @@ window.addEventListener("load", () => {
 });
 
 // Smooth scroll with suppression to avoid flicker while scrolling
-document.addEventListener("click", (e) => {
-  const link = e.target.closest('a[href^="#"]');
-  if (!link) return;
+function updateActiveFromScroll() {
+  // Robust bottom check (accounts for mobile address bar/UI)
+  const doc = document.documentElement;
+  const body = document.body;
+  const scrollY = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
+  const viewport = window.innerHeight || doc.clientHeight;
+  const scrollHeight = Math.max(doc.scrollHeight, body.scrollHeight);
 
-  const id = link.getAttribute("href");
-  const target = document.querySelector(id);
-  if (!target) return;
+  const atBottom = Math.ceil(scrollY + viewport) >= scrollHeight - 2;
+  if (atBottom) {
+    const last = sections[sections.length - 1];
+    if (last) setActive(last.id);
+    return;
+  }
 
-  e.preventDefault();
-
-  // Suppress scroll-spy while smooth scrolling
-  suppressSpy = true;
-
-  // Immediate visual feedback
-  setActive(id.slice(1));
-
-  target.scrollIntoView({ behavior: "smooth", block: "start" });
-
-  // Re-enable spy shortly after scroll completes and resync
-  setTimeout(() => {
-    suppressSpy = false;
-    updateActiveFromScroll();
-  }, 650); // adjust if needed (500–700ms)
-});
+  const y = scrollY + headerOffset() + viewport * 0.35;
+  let current = sections[0]?.id;
+  for (const sec of sections) {
+    if (sec.offsetTop <= y) current = sec.id;
+    else break;
+  }
+  if (current) setActive(current);
+}
 
 // === Back-to-top button ===
 const backToTop = document.querySelector(".back-to-top");

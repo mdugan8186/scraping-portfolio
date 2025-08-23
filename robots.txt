@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mdugan8186.github.io/scraping-portfolio/sitemap.xml

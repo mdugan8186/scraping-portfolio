@@ -1,6 +1,6 @@
 # Michael Dugan – Portfolio Website
 
-![Portfolio Preview](assets/images/preview.png)
+![Portfolio Preview](assets/images/portfolio-home.png)
 
 A responsive, accessible portfolio website built to showcase web scraping, data, and development projects.  
 Designed for freelance clients and recruiters looking for clean, production-ready work.

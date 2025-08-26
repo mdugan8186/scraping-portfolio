@@ -110,8 +110,17 @@ button,
   flex-direction: column;
   gap: 2px;
 }
-.brand__name { font-weight: 700; letter-spacing: 0.2px; }
-.brand__tagline { font-size: 0.9rem; color: var(--muted); }
+.brand__name { 
+  font-weight: 700; 
+  letter-spacing: 0.2px; 
+  /* Explicit font-size to satisfy Lighthouse */
+  font-size: 1.125rem; 
+  line-height: 1.1; 
+}
+.brand__tagline { 
+  font-size: 0.9rem; 
+  color: var(--muted); 
+}
 
 .site-nav .nav-list {
   display: flex;

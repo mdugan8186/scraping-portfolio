@@ -142,8 +142,7 @@ button,
   gap: 1rem;
 }
 .hero h1 {
-  font-size: 2.4rem; /* explicit fallback */
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem); /* responsive */
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   line-height: 1.2;
   margin: 0;
 }
@@ -159,6 +158,14 @@ button,
 }
 
 /* ===== Sections / cards baseline (used later) ===== */
+
+/* Explicit hero H1 sizing so Lighthouse recognizes it */
+section#hero h1 {
+  font-size: 2.4rem;            /* explicit fallback for the audit */
+  line-height: 1.2;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem); /* responsive actual size */
+}
+
 .section h2 {
   font-size: clamp(1.3rem, 2.6vw, 1.8rem);
   margin: 0 0 0.75rem;

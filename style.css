@@ -142,12 +142,6 @@ button,
   gap: 1rem;
 }
 
-/* Force explicit size on the live hero H1 for Lighthouse */
-section#hero > .container.hero-inner > h1 {
-  font-size: 2.4rem !important; /* fallback Lighthouse can’t ignore */
-  line-height: 1.2 !important;
-}
-/* Keep your responsive behavior right after (browsers will use this) */
 .hero h1 {
   font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   line-height: 1.2;

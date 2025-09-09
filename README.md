@@ -1,4 +1,4 @@
-# Michael Dugan – Portfolio Website
+# Mike Dugan – Portfolio Website
 
 ![Portfolio Preview](assets/images/portfolio-home.png)
 

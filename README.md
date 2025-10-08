@@ -56,6 +56,7 @@ For freelance opportunities and collaborations:
 
 - Portfolio: [mdugan8186.github.io/scraping-portfolio](https://mdugan8186.github.io/scraping-portfolio/)
 - GitHub: [@mdugan8186](https://github.com/mdugan8186)
+- Fiverr: [Hire Me for a Custom Web Scraper](https://www.fiverr.com/s/99aN6vA)
 - Email: [mdugan8186.work@gmail.com](mailto:mdugan8186.work@gmail.com)
 
 ---
